@@ -10,7 +10,18 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+app.use(function(req, res, next) {
+  res.header(
+      "Access-Control-Allow-Headers",
+      "x-auth-token, Origin, Content-Type, Accept"
+  );
+  res.setHeader("Access-Control-Allow-Origin","*");
+  res.setHeader("Access-control-Allow-Methods", "GET, POST, PUT");
+  res.setHeader("Access-Control-Allow-Headers", "Origin,X-Requested-With, content-type,Accept,Authorization");
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  next();
+});
+
 
 app.use(express.json({ limit: "50mb" }));
 
