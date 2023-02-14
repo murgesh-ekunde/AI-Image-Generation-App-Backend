@@ -9,6 +9,7 @@ import dalleRoutes from './routes/dalleRoutes.js'
 dotenv.config();
 
 const app = express();
+app.use(cors());
 
 app.use(function(req, res, next) {
   res.header(
